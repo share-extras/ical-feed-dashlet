@@ -1,0 +1,6 @@
+<webscript>
+   <shortname>iCalendar Feed</shortname>
+   <description>Display a list of upcoming events from an iCal feed</description>
+   <family>dashlet</family>
+   <url>/components/dashlets/ical-feed</url>
+</webscript>

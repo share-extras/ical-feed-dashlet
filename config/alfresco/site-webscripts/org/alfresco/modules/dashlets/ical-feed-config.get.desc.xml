@@ -1,0 +1,5 @@
+<webscript>
+  <shortname>iCalendar Dashlet Config Dialog</shortname>
+  <description>iCalendar Dashlet Config Dialog</description>
+  <url>/modules/dashlets/ical-feed/config</url>
+</webscript>

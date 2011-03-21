@@ -1,0 +1,6 @@
+<webscript>
+  <shortname>iCalendar Dashlet Data</shortname>
+  <description>Proxy for loading data from an iCalendar feed</description>
+  <url>/modules/dashlets/ical-feed/data/{componentId}</url>
+  <format default="json">argument</format>
+</webscript>
