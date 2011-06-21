@@ -114,7 +114,7 @@
        * 
        * @method refresh
        */
-      refresh: function Notice_refresh()
+      refresh: function ICalFeed_refresh()
       {
          if (this.options.feedUrl)
          {
