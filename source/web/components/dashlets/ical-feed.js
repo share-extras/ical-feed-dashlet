@@ -160,7 +160,7 @@
        * @method onLoadSuccess
        * @param p_response {object} Response object from request
        */
-      onLoadSuccess: function SitePoll_onLoadSuccess(p_response)
+      onLoadSuccess: function ICalFeed_onLoadSuccess(p_response)
       {
          this.titleContainer.innerHTML = this.msg("label.title-feed", p_response.json.calendar.name);
          var events = p_response.json.events, event, lastEvent, isSameDay;

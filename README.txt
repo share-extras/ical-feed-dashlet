@@ -1,16 +1,16 @@
-Site Blog dashlet for Alfresco Share
+iCal Feed dashlet for Alfresco Share
 ====================================
 
 Author: Will Abson
 
-This add-on project for Alfresco Share defines a simple dashlet to display 
-the last ten blog posts from the site.
+This add-on project for Alfresco Share defines a dashlet which displays
+upcoming events from any valid iCalendar feed URL.
 
 Installation
 ------------
 
 The dashlet has been developed to install on top of an existing Alfresco
-3.3 installation.
+3.3 or 3.4 installation.
 
 An Ant build script is provided to build a JAR file containing the 
 custom files, which can then be installed into the 'tomcat/shared/lib' folder 
@@ -21,7 +21,7 @@ directory.
 
     ant clean dist-jar
 
-The command should build a JAR file named site-blog-dashlet.jar
+The command should build a JAR file named ical-feed-dashlet.jar
 in the 'dist' directory within your project.
 
 To deploy the dashlet files into a local Tomcat instance for testing, you can 
@@ -36,6 +36,7 @@ resources in the JAR file are picked up.
 Using the dashlet
 -----------------
 
-Log in to Alfresco Share and navigate to a site dashboard. Click the 
-Customize Dashboard button to edit the contents of the dashboard and drag 
-the dashlet into one of the columns from the list of dashlets.
+Log in to Alfresco Share and navigate to a site dashboard or your user 
+dashboard. Click the Customize Dashboard button to edit the contents of the 
+dashboard and drag the dashlet into one of the columns from the list of 
+dashlets.
