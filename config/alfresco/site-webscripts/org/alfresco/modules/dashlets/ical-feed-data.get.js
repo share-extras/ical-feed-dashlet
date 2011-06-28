@@ -36,54 +36,60 @@ function main()
                   }
                   else if (parts[0].indexOf("DTSTART") == 0)
                   {
-                     // Datetime format, e.g. 19980119T070000Z
-                     if (/^\d{8}T\d{6}Z$/.test(parts[1]))
+                     if (currEvent != null)
                      {
-                        currEvent.dtstart = {
-                           type: "date-time",
-                           value: new Date(parts[1].substring(0,4), //year
-                              parts[1].substring(4,6), //month
-                              parts[1].substring(6,8), //day
-                              parts[1].substring(9,11), //hour
-                              parts[1].substring(11,13), //minute
-                              parts[1].substring(13,15) //second
-                        )};
-                     }
-                     // Date format, e.g. 19980119
-                     else if (/^\d{8}$/.test(parts[1]))
-                     {
-                        currEvent.dtstart = {
-                           type: "date",
-                           value: new Date(parts[1].substring(0,4), //year
-                              parts[1].substring(4,6), //month
-                              parts[1].substring(6,8) //day
-                        )};
+                        // Datetime format, e.g. 19980119T070000Z
+                        if (/^\d{8}T\d{6}Z$/.test(parts[1]))
+                        {
+                           currEvent.dtstart = {
+                              type: "date-time",
+                              value: new Date(parts[1].substring(0,4), //year
+                                 parts[1].substring(4,6), //month
+                                 parts[1].substring(6,8), //day
+                                 parts[1].substring(9,11), //hour
+                                 parts[1].substring(11,13), //minute
+                                 parts[1].substring(13,15) //second
+                           )};
+                        }
+                        // Date format, e.g. 19980119
+                        else if (/^\d{8}$/.test(parts[1]))
+                        {
+                           currEvent.dtstart = {
+                              type: "date",
+                              value: new Date(parts[1].substring(0,4), //year
+                                 parts[1].substring(4,6), //month
+                                 parts[1].substring(6,8) //day
+                           )};
+                        }
                      }
                   }
                   else if (parts[0].indexOf("DTEND") == 0)
                   {
-                     // Datetime format, e.g. 19980119T070000Z
-                     if (/^\d{8}T\d{6}Z$/.test(parts[1]))
+                     if (currEvent != null)
                      {
-                        currEvent.dtend = {
-                           type: "date-time",
-                           value: new Date(parts[1].substring(0,4), //year
-                              parts[1].substring(4,6), //month
-                              parts[1].substring(6,8), //day
-                              parts[1].substring(9,11), //hour
-                              parts[1].substring(11,13), //minute
-                              parts[1].substring(13,15) //second
-                        )};
-                     }
-                     // Date format, e.g. 19980119
-                     else if (/^\d{8}$/.test(parts[1]))
-                     {
-                        currEvent.dtend = {
-                           type: "date",
-                           value: new Date(parts[1].substring(0,4), //year
-                              parts[1].substring(4,6), //month
-                              parts[1].substring(6,8) //day
-                        )};
+                        // Datetime format, e.g. 19980119T070000Z
+                        if (/^\d{8}T\d{6}Z$/.test(parts[1]))
+                        {
+                           currEvent.dtend = {
+                              type: "date-time",
+                              value: new Date(parts[1].substring(0,4), //year
+                                 parts[1].substring(4,6), //month
+                                 parts[1].substring(6,8), //day
+                                 parts[1].substring(9,11), //hour
+                                 parts[1].substring(11,13), //minute
+                                 parts[1].substring(13,15) //second
+                           )};
+                        }
+                        // Date format, e.g. 19980119
+                        else if (/^\d{8}$/.test(parts[1]))
+                        {
+                           currEvent.dtend = {
+                              type: "date",
+                              value: new Date(parts[1].substring(0,4), //year
+                                 parts[1].substring(4,6), //month
+                                 parts[1].substring(6,8) //day
+                           )};
+                        }
                      }
                   }
                   else if (parts[0] == "SUMMARY")
