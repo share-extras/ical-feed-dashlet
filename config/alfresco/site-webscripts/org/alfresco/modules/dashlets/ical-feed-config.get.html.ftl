@@ -3,7 +3,7 @@
    <div class="bd">
       <form id="${args.htmlid}-form" action="" method="POST">
          <div class="yui-gd">
-            <div class="yui-u first"><label for="${args.htmlid}-feed-url">${msg("label.feed-url")}:</label></div>
+            <div class="yui-u first"><label for="${args.htmlid}-feed-url">${msg("label.feed-url")}:*</label></div>
             <div class="yui-u" >
                <input type="text" name="feedUrl" id="${args.htmlid}-feed-url" />
             </div>

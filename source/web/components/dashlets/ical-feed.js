@@ -260,6 +260,9 @@
                   fn: function ICalFeed_doSetupForm_callback(form)
                   {
                      Dom.get(this.configDialog.id + "-feed-url").value = this.options.feedUrl;
+                     // Survey ID is mandatory
+                     this.configDialog.form.addValidation(this.configDialog.id + "-feed-url", Alfresco.forms.validation.mandatory, null, "keyup");
+                     this.configDialog.form.addValidation(this.configDialog.id + "-feed-url", Alfresco.forms.validation.mandatory, null, "blur");
                   },
                   scope: this
                }
