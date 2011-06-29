@@ -1,3 +1,5 @@
+<#macro dateFormat date>${date?string("dd MMM yyyy HH:mm:ss 'GMT'Z '('zzz')'")}</#macro>
+<#escape x as jsonUtils.encodeJSONString(x)>
 {
    "calendar": {
       "name": "${calendar.name!''?js_string}",
@@ -8,18 +10,19 @@
       {
          "dtstart": {
             "type": "${e.dtstart.type}",
-            "value": "${e.dtstart.value?datetime?string("EEEE, MMMM dd, yyyy, hh:mm:ss a ZZ")?js_string}"
+            "value": "<@dateFormat e.dtstart.value />"
          },
          "dtend": {
             "type": "${e.dtend.type}",
-            "value": "${e.dtend.value?datetime?string("EEEE, MMMM dd, yyyy, hh:mm:ss a ZZ")?js_string}"
+            "value": "<@dateFormat e.dtend.value />"
          },
-         "summary": "${e.summary!''?js_string}",
-         "location": "${e.location!''?js_string}",
-         "uid": "${e.uid!''?js_string}",
-         "url": "${e.url!''?js_string}",
-         "dtstamp": "${e.dtstamp!''?js_string}"
+         "summary": "${e.summary!''}",
+         "location": "${e.location!''}",
+         "uid": "${e.uid!''}",
+         "url": "${e.url!''}",
+         "dtstamp": "${e.dtstamp!''}"
       }<#if e_has_next>,</#if>
    </#list>
    ]
 }
+</#escape>

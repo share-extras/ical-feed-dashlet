@@ -162,19 +162,22 @@
        */
       onLoadSuccess: function ICalFeed_onLoadSuccess(p_response)
       {
-         this.titleContainer.innerHTML = this.msg("label.title-feed", p_response.json.calendar.name);
+         this.titleContainer.innerHTML = this.msg("label.title-feed", p_response.json.calendar.name != "" ? p_response.json.calendar.name : p_response.json.calendar.description);
          var events = p_response.json.events, event, lastEvent, isSameDay;
          if (events.length > 0)
          {
+            // Parse the dates and sort
+            for ( var i = 0; i < events.length; i++)
+            {
+               event = events[i];
+               event.dtstart.value = new Date(event.dtstart.value);
+               event.dtend.value = new Date(event.dtend.value);
+            }
+            events.sort(this.sortByEventDate);
             var html = "";
             for ( var i = 0; i < events.length; i++)
             {
                event = events[i];
-               // Parse the dates and sort
-               event.dtstart.value = new Date(event.dtstart.value);
-               event.dtend.value = new Date(event.dtend.value);
-               events.sort(this.sortByEventDate);
-               
                isSameDay = lastEvent != null && (event.dtstart.value.getFullYear() == lastEvent.dtstart.value.getFullYear() && 
                      event.dtstart.value.getMonth() == lastEvent.dtstart.value.getMonth() &&
                      event.dtstart.value.getDate() == lastEvent.dtstart.value.getDate());
@@ -194,6 +197,10 @@
             html += "</div></div>\n";
             this.bodyContainer.innerHTML = html;
          }
+         else
+         {
+            this.bodyContainer.innerHTML = "<div>" + this.msg("msg.no-events") + "</div>";
+         }
       },
       
       /**
@@ -209,16 +216,17 @@
       },
 
       /**
-       * Sort iCal events by date
+       * Sort iCal events by date, from earliest to latest
        * 
        * @method sortByEventDate
        * @param ev1 {object} Object representing the first event
        * @param ev2 {object} Object representing the second event
-       * @return {int} -1 if ev1 after post2, 1 if before, 0 if the same
+       * @return {int} 1 if ev1 after ev2, -1 if before, 0 if the same
        */
       sortByEventDate: function ICalFeed_sortByEventDate(ev1, ev2)
       {
-         return (ev1.dtstart > ev2.dtstart) ? -1 : (ev1.dtstart < ev2.dtstart) ? 1 : 0;
+         var t1 = ev1.dtstart.value.getTime(), t2 = ev2.dtstart.value.getTime();
+         return (t1 > t2) ? 1 : (t1 < t2) ? -1 : 0;
       },
 
       /**
