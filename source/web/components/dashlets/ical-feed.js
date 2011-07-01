@@ -186,7 +186,8 @@
                   html += (i > 0) ? "</div></div>\n" : "";
                   html += "<div class=\"detail-list-item\">\n" + 
                      "<div class=\"icon\"><img alt=\"day\" src=\"/share/res/components/calendar/images/calendar-16.png\"></div>\n" + 
-                     "<div class=\"details2\"><h4>" + Alfresco.util.formatDate(event.dtstart.value, "mediumDate") + "</h4>\n";
+                     "<div class=\"details2\"><h4 title=\"" + Alfresco.util.formatDate(event.dtstart.value, "fullDate") + "\">" + 
+                     Alfresco.util.formatDate(event.dtstart.value, "mediumDate") + "</h4>\n";
                }
                html += "<div><span>" +
                   (event.dtstart.type == "date-time" ? Alfresco.util.formatDate(event.dtstart.value, "shortTime") + " - " + Alfresco.util.formatDate(event.dtend.value, "shortTime") + " " : "") + 

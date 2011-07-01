@@ -44,7 +44,7 @@ function main()
                            currEvent.dtstart = {
                               type: "date-time",
                               value: new Date(parts[1].substring(0,4), //year
-                                 parts[1].substring(4,6), //month
+                                 parts[1].substring(4,6) - 1, //month 0-11
                                  parts[1].substring(6,8), //day
                                  parts[1].substring(9,11), //hour
                                  parts[1].substring(11,13), //minute
@@ -57,7 +57,7 @@ function main()
                            currEvent.dtstart = {
                               type: "date",
                               value: new Date(parts[1].substring(0,4), //year
-                                 parts[1].substring(4,6), //month
+                                 parts[1].substring(4,6) - 1, //month 0-11
                                  parts[1].substring(6,8) //day
                            )};
                         }
@@ -73,7 +73,7 @@ function main()
                            currEvent.dtend = {
                               type: "date-time",
                               value: new Date(parts[1].substring(0,4), //year
-                                 parts[1].substring(4,6), //month
+                                 parts[1].substring(4,6) - 1, //month 0-11
                                  parts[1].substring(6,8), //day
                                  parts[1].substring(9,11), //hour
                                  parts[1].substring(11,13), //minute
@@ -86,7 +86,7 @@ function main()
                            currEvent.dtend = {
                               type: "date",
                               value: new Date(parts[1].substring(0,4), //year
-                                 parts[1].substring(4,6), //month
+                                 parts[1].substring(4,6) - 1, //month 0-11
                                  parts[1].substring(6,8) //day
                            )};
                         }
