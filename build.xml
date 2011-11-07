@@ -5,7 +5,7 @@
                             ***********************************
     
     Author: Will Abson
-    Version: 1.5
+    Version: 1.5.1
     
     Provides a set of targets for building extensions to Alfresco Share in ZIP, AMP and JAR archive 
     formats. Since Alfresco 3.3, JAR is the recommended package structure for all simple extensions.
@@ -152,6 +152,7 @@
                 <!-- Surf config -->
                 <exclude name="alfresco/share*-config.xml" />
                 <exclude name="alfresco/web-extension/share-config-custom.xml" />
+                <exclude name="share-config-custom.xml" />
                 <!-- Global excludes -->
                 <exclude name="${config.excludes}" />
             </fileset>
@@ -168,6 +169,11 @@
                 <filename name="alfresco/web-extension/share-config-custom.xml" />
             </fileset>
             <globmapper from="alfresco/web-extension/*.xml" to="*.xml" handledirsep="true" />
+        </copy>
+        <copy todir="${build.jar.dir}/META-INF" includeEmptyDirs="false">
+            <fileset dir="${config.dir}">
+                <filename name="share-config-custom.xml" />
+            </fileset>
         </copy>
         <!-- Minify JS -->
         <yuicompress fromdir="${res.dir}" todir="${build.jar.dir}/META-INF" excludes="**/*-min.js" warn="${yuicompress.warn}">
