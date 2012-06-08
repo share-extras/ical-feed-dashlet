@@ -133,7 +133,7 @@
        * 
        * @method load
        */
-      load: function ICalFeed_loadPosts()
+      load: function ICalFeed_load()
       {
          // Load the data
          Alfresco.util.Ajax.request(
