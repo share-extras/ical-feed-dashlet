@@ -133,7 +133,7 @@
        * 
        * @method load
        */
-      load: function ICalFeed_loadPosts()
+      load: function ICalFeed_load()
       {
          // Load the data
          Alfresco.util.Ajax.request(
@@ -162,8 +162,10 @@
        */
       onLoadSuccess: function ICalFeed_onLoadSuccess(p_response)
       {
-         this.titleContainer.innerHTML = this.msg("label.title-feed", p_response.json.calendar.name != "" ? p_response.json.calendar.name : p_response.json.calendar.description);
-         var events = p_response.json.events, event, lastEvent, isSameDay;
+         var events = p_response.json.events, event, lastEvent, isSameDay, 
+            calTitle = p_response.json.calendar.name != "" ? p_response.json.calendar.name : p_response.json.calendar.description;
+         
+         this.titleContainer.innerHTML = calTitle != "" ? this.msg("label.title-feed", calTitle) : this.msg("label.untitled");
          if (events.length > 0)
          {
             // Parse the dates and sort
